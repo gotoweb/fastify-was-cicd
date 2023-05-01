@@ -1,0 +1,96 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:059377999253:task-definition/dob4-project2:5",
+    "containerDefinitions": [
+        {
+            "name": "dob4-project2-was",
+            "image": "059377999253.dkr.ecr.ap-northeast-2.amazonaws.com/dob4-p2-was:37933c2bd3a3d7639bc34feb0a4e14b282fd5b09",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "dob4-project2-was-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "RDS_USERNAME",
+                    "valueFrom": "arn:aws:secretsmanager:ap-northeast-2:059377999253:secret:ecs/dob4-was/rds-secret-Z6ueDf:RDS_USERNAME::"
+                },
+                {
+                    "name": "RDS_HOSTNAME",
+                    "valueFrom": "arn:aws:secretsmanager:ap-northeast-2:059377999253:secret:ecs/dob4-was/rds-secret-Z6ueDf:RDS_HOSTNAME::"
+                }
+            ],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/dob4-project2",
+                    "awslogs-region": "ap-northeast-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "family": "dob4-project2",
+    "executionRoleArn": "arn:aws:iam::059377999253:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 5,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.secrets.asm.environment-variables"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2023-05-01T08:48:12.166Z",
+    "registeredBy": "arn:aws:iam::059377999253:root",
+    "tags": []
+}
